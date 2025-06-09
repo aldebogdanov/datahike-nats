@@ -7,7 +7,7 @@ trap teardown EXIT
 
 function setup() {
     if [ -z ${CIRCLECI} ]; then
-        echo $(docker run --detach --publish 8000:8000 circleci/dynamodb:latest)
+        echo $(docker run --detach --publish 4222:4222 nats:2.10-alpine)
     fi
 }
 
