@@ -1,17 +1,14 @@
-(ns datahike-backend-template.core-test
- (:require
+(ns datahike-nats.core-test
+  (:require
     #?(:cljs [cljs.test    :as t :refer-macros [is are deftest testing]]
        :clj  [clojure.test :as t :refer        [is are deftest testing]])
     [datahike.api :as d]
-    [datahike-backend-template.core]))
+    [datahike-nats.core]))
 
 (deftest test-backend-store-config
-  (let [config {:store {:backend :backendname
-                        :user "datahike"
-                        :password "datahike"
-                        :host "localhost"
-                        :port 12345
-                        :dbname "datahike"}
+  (let [config {:store {:backend :nats
+                        :nats-url "nats://localhost:4222"
+                        :bucket "datahike"}
                 :schema-flexibility :read
                 :keep-history? false}
         _ (d/delete-database config)]

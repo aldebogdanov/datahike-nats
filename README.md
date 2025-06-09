@@ -1,6 +1,6 @@
 # Backend Development
 
-This is a template to get you started with the basics in backend development for Datahike. Please take a look at the source code and the tests to get you running.
+This repository implements a Datahike backend powered by a NATS Key/Value store.  The code is based on the backend template and demonstrates how to hook Datahike into a NATS JetStream bucket.
 
 ## Status
 <p align="center">
@@ -19,7 +19,7 @@ This document tries to provide guardrails for consistency for datahike backends.
 
 It would be very beneficial if you could introduce working integration testing locally and via CI on the basis of the provided templates. That makes it easier for everybody to check if a new release of Datahike is breaking your backend. Of course you can use technologies you prefer.
 
-We are currently running our integration tests with a script at `./bin/run-integrationtests`. This script could start containers to test against. Does your project need an API account for testing? Then please describe a way to obtain test capabilities in this README. Using the `bin/run-integrationtests` script is easiest and you could just enter your way of running the test in there. Additional unit tests are of course very welcome and could be run like in other replikativ repositories with `./bin/run-unittests`.
+We are currently running our integration tests with a script at `./bin/run-integrationtests`. It spins up a temporary NATS container so tests can talk to a local server. Does your project need an API account for testing? Then please describe a way to obtain test capabilities in this README. Using the `bin/run-integrationtests` script is easiest and you could just enter your way of running the test in there. Additional unit tests are of course very welcome and could be run like in other replikativ repositories with `./bin/run-unittests`.
 
 ## Releasing
 It is best to make your backend available via [Clojars](https://clojars.org/) so everybody finds it where it is expected. We recommend to release a new version automatically when merging or committing into master. Please have a look at the file `./circleci/config.yaml` to understand how that can be achieved. We propose CircleCI because we are using that but you are of course welcome to use whatever you prefer. Deploy to Clojars with `clj -X:jar` and `clj -X:deploy` or use the CI. You need to add your Clojars token and username as environment variable in your CircleCI project in case you are using the provided CI-configuration.
